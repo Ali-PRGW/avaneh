@@ -2,6 +2,7 @@ import 'package:avaneh/common/widgets/button/basic_app_button.dart';
 import 'package:avaneh/core/configs/assets/app_images.dart';
 import 'package:avaneh/core/configs/assets/app_vectors.dart';
 import 'package:avaneh/core/theme/app_colors.dart';
+import 'package:avaneh/presentation/choose_mode/pages/choose_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,6 +22,12 @@ class GetStartedPage extends StatelessWidget {
                 image: AssetImage(AppImages.introBG),
               ),
             ),
+          ),
+
+          Container(color: Colors.black.withOpacity(0.15)),
+
+          Padding(
+            padding: EdgeInsetsGeometry.symmetric(vertical: 40, horizontal: 40),
             child: Column(
               children: [
                 Align(
@@ -33,6 +40,7 @@ class GetStartedPage extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
+                    fontSize: 25,
                   ),
                 ),
                 SizedBox(height: 21),
@@ -46,12 +54,20 @@ class GetStartedPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(height: 20),
-                BasicAppButton(onPressed: () {}, title: 'Get Started'),
+                BasicAppButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) => ChooseModePage(),
+                      ),
+                    );
+                  },
+                  title: 'Get Started',
+                ),
               ],
             ),
           ),
-
-          Container(color: Colors.black.withOpacity(0.15)),
         ],
       ),
     );
