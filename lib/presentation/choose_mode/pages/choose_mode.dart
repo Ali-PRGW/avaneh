@@ -4,8 +4,10 @@ import 'package:avaneh/common/widgets/button/basic_app_button.dart';
 import 'package:avaneh/core/configs/assets/app_images.dart';
 import 'package:avaneh/core/configs/assets/app_vectors.dart';
 import 'package:avaneh/core/theme/app_colors.dart';
+import 'package:avaneh/presentation/choose_mode/bloc/theme_cubit.dart';
 import 'package:avaneh/presentation/intro/pages/get_started.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ChooseModePage extends StatelessWidget {
@@ -49,37 +51,47 @@ class ChooseModePage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ClipOval(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff30393c).withOpacity(0.5),
-                          ),
-                          child: SvgPicture.asset(
-                            AppVectors.moon,
-                            fit: BoxFit.none,
+                    GestureDetector(
+                      onTap: () {
+                        context.read<ThemeCubit>().updateTheme(ThemeMode.dark);
+                      },
+                      child: ClipOval(
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child: Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xff30393c).withOpacity(0.5),
+                            ),
+                            child: SvgPicture.asset(
+                              AppVectors.moon,
+                              fit: BoxFit.none,
+                            ),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(width: 40),
-                    ClipOval(
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                        child: Container(
-                          height: 80,
-                          width: 80,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: Color(0xff30393c).withOpacity(0.5),
-                          ),
-                          child: SvgPicture.asset(
-                            AppVectors.sun,
-                            fit: BoxFit.none,
+                    GestureDetector(
+                      onTap: () {
+                        context.read<ThemeCubit>().updateTheme(ThemeMode.light);
+                      },
+                      child: ClipOval(
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                          child: Container(
+                            height: 80,
+                            width: 80,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Color(0xff30393c).withOpacity(0.5),
+                            ),
+                            child: SvgPicture.asset(
+                              AppVectors.sun,
+                              fit: BoxFit.none,
+                            ),
                           ),
                         ),
                       ),
